@@ -1,35 +1,27 @@
-class BankAccount:
-    def __init__(self, account_number, initial_balance):
-        self.__account_number = account_number
-        self.__balance = initial_balance
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.__courses = {}
 
-    def get_account_number(self):
-        return self.__account_number
+    def calculate_letter_grade(self, score):
+        if score >= 90: return "A"
+        elif score >= 80: return "B"
+        elif score >= 70: return "C"
+        elif score >= 60: return "D"
+        else: return "F"
 
-    def get_balance(self):
-        return self.__balance
+    def add_course(self, course_name, score):
+        self.__courses[course_name] = self.calculate_letter_grade(score)
 
-    def deposit(self, amount):
-        if amount <= 0:
-            raise ValueError("cannot deposit zero or negative funds")
-        else:
-            self.__balance += amount
-
-    def withdraw(self, amount):
-        if amount <= 0:
-            raise ValueError("cannot withdraw zero or negative funds")
-        
-        if self.__balance < amount:
-            raise ValueError("insufficient funds")
-        else:
-            self.__balance -= amount
+    def get_courses(self):
+        return self.__courses
 
 
 def main():
-    brandon = BankAccount(987654321, 100)
-    brandon.deposit(50)
-    brandon.withdraw(10)
-    print(f"ACCOUNT: {brandon.get_account_number()}, BALANCE: {brandon.get_balance()}")
+    learner = Student("Brandon")
+    learner.add_course("Science", 76)
+    learner.add_course("English", 87)
+    print(learner.get_courses())
 
 
 main()
