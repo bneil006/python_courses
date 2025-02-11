@@ -1,5 +1,4 @@
 class Character:
-    total_damage = 0
     character_list = {}
     
     def __init__(self, name, health, armor, damage):
@@ -36,6 +35,12 @@ def list_character_attr(character_dict):
         print(f"Name: {name}, Health: {health}, Armor: {armor}, Damage {damage}")
 
 def character_battle(victim, attacker):
+    print("__________________________________________________________________________________________________________")
+    print("")
+    print(f"DEFENDER: {victim.name} starting with {victim.health}. ATTACKER: {attacker.name} attacking with {attacker.damage}.")
+    print("__________________________________________________________________________________________________________")
+    print("")
+    
     while victim.health > 0:
         victim.take_damage(attacker.damage)
         print(f"{victim.name} took {attacker.damage} Damage from: {attacker.name}. Health: {victim.health}")
@@ -46,18 +51,16 @@ def character_battle(victim, attacker):
 
 
 def main():
-    Character("Logen Nine", 15, 12, 20)
+    Character("Logen Ninefingers", 15, 12, 20)
     Character("Cual Shivers", 10, 20, 5)
-    Character("Logen Nine", 1, 1, 1)
+    Character("Logen Ninefingers", 1, 1, 1)
     Character("Nicoma Cosca", 8, 10, 3)
 
     brandon = Character("Brandon", 10, 3, 5)
     luna = Character("Luna", 10, 4, 3)
 
-    print(Character.character_list)
-    list_character_attr(Character.character_list)
-
     character_battle(brandon, luna)
+    character_battle(Character("Jess", 15, 5, 5), Character("Ame", 15, 5, 2))
 
 
 main()
