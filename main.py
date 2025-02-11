@@ -49,10 +49,14 @@ def character_battle(victim, attacker):
             print(f"{victim.name} took {attacker.damage} Damage from: {attacker.name}. Health: {victim.health}")
             print(f"{victim.name} is Dead.")
 
+def updated_battle(victim, attacker):
+    while victim.health > 0:
+        victim.take_damage(attacker.damage)
+
 
 def main():
     Character("Logen Ninefingers", 15, 12, 20)
-    Character("Cual Shivers", 10, 20, 5)
+    Character("Caul Shivers", 10, 20, 5)
     Character("Logen Ninefingers", 1, 1, 1)
     Character("Nicoma Cosca", 8, 10, 3)
 
@@ -61,6 +65,8 @@ def main():
 
     character_battle(brandon, luna)
     character_battle(Character("Jess", 15, 5, 5), Character("Ame", 15, 5, 2))
+
+    print(Character.character_list["Caul Shivers"])
 
 
 main()
