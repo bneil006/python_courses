@@ -8,27 +8,15 @@ def main():
 
     # don't touch above this line
 
-    # This challenge was deceptively hard. I'll break down why and how I solved it.
-    # It was hard because we are using a method inside the Dragon Class instance that loops over all the Dragon Class instances in a list
-    # and then we come outside of the class into the main function to create some logic to make each dragon shoot at eachother but
-    # they can not hit themselves. Sounded super easy until I begain. 
-
     for dragon in dragons:
         describe(dragon)
 
-
-    # I have to loop through the dragons list that we have, create a copy of that list and delete the list object at the counter 
-    # increment starting at index 0 then increment the counter += 1, i guess I could probably increment at the end of the for loop as well
-    # just as long as i create a copy of the dragons list and delete the counter index before using the .breathe_fire method again.
-
     counter = 0
     for dragon in dragons:
-        attack_list = dragons.copy()
-        del attack_list[counter]
-        dragon.breathe_fire(3, 3, attack_list)
-        counter += 1
-
-    # this took me forever to figure out for some reason, but the simpliest problems always feel the hardest i guess.
+        attack_list = dragons.copy() # create a copy of the list
+        del attack_list[counter] # delete the object at this list index
+        dragon.breathe_fire(3, 3, attack_list) # using our new list without the dragon attacking in it.
+        counter += 1 # increment to make sure we delete the dragon attacking so it doesn't attack its self
 
 # don't touch below this line
 
