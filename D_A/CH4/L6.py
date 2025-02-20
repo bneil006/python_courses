@@ -1,32 +1,36 @@
 # Merge Sort
-
 import time
+
 def merge_sort(nums):
-    if len(nums) < 2:
-        return nums
-    first = merge_sort(nums[: len(nums) // 2])
-    second = merge_sort(nums[len(nums) // 2 :])
-    return merge(first, second)
+    if len(nums) < 2: return nums
+    left_split = merge_sort(nums[:len(nums) // 2]) # nums[:ENDING AT] only need to return all leftmost numbers to index
+    right_split = merge_sort(nums[len(nums) // 2:]) # nums[STARTING AT:] only need to return all rightmost numbers from index
+    return merge(left_split, right_split)
 
 
 def merge(first, second):
     final = []
-    i = 0
-    j = 0
+    i, j = 0, 0 # going to use these to increment our index
     while i < len(first) and j < len(second):
-        if first[i] <= second[j]:
+        if first[i] <= second[j]: # which is smallest OR EQUAL, whichever is add that indexed item to the final list and increment the index then repeate
             final.append(first[i])
             i += 1
         else:
             final.append(second[j])
             j += 1
-    while i < len(first):
+    
+    while i < len(first): # add the remaining of the first list to final
         final.append(first[i])
         i += 1
-    while j < len(second):
+    
+    while j < len(second): # add the remaining of the second list to final
         final.append(second[j])
         j += 1
+
     return final
+
+
+
 
 run_cases = [([3, 2, 1], [1, 2, 3]), ([5, 4, 3, 2, 1], [1, 2, 3, 4, 5])]
 
